@@ -1,6 +1,6 @@
 # APIKits Ruby Client
 
-**ApiKits** handles all the logic necessary to call a REST API, catch the response and initialize a parsed object. It works very well with Ruby on Rails, so you can exchange your ActiveRecord-based models without any concern and your application will make API calls transparently. It is possible to use Typhoeus for parallel requests, but it uses  the native Ruby Library Net::Http by default.
+**ApiKits** handles all the logic necessary to call a REST API, catch the response and initialize a parsed object. It works very well with Ruby on Rails, so you can exchange your ActiveRecord-based models without any concern and your application will make API calls transparently. It is possible to use Typhoeus for parallel requests, but it uses  the native Ruby Library Net::HTTP by default.
 
 ## Installation
 
