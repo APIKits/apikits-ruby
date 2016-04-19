@@ -4,11 +4,11 @@ module ApiKits
 
   # ApiKits::Base provides a way to make easy API requests as well as
   # making possible to use it inside rails.
-  # A possible implementation:
+  # A example implementation:
   #  class Car < ApiKits::Base
   #    attr_accessor :color, :name, :year
   #  end
-  # This class will handle Rails form as well as it works with respond_with.
+  # This class will handle Rails forms as well as it works with respond_with.
   class Base
     include ActiveModel::Validations
     include ActiveModel::Conversion
@@ -153,11 +153,38 @@ module ApiKits
       alias_method :all, :collection
     end
 
+    # Initialize a collection of objects based on search constraints. The collection will
+    # be an ApiKits::Collection object.
+    # The objects in the collection will be all instances of this (ApiKits::Base) class.
+    #
+    # @return [Collection] a collection of objects.
+    def self.where(constraints = {})
+      query = build_query_string(constraints)
+      url = "#{ApiKits.config.api_uri}#{resource_path}?#{query}"
+      attributes = ApiKits::Parser.response(ApiKits::Dispatcher.get(url), url)
+      ApiKits::Collection.new(attributes, self)
+    end
+
+    class << self
+      alias_method :where, :search
+    end
+
+
     # Set the hash of errors, making keys symbolic.
     #
     # @param [Hash] errs errors of the object.
     def errors=(errs = {})
       errors.add_errors(Hash[errs.map{ |(key, value)| [key.to_sym,value] }])
+    end
+
+    private
+
+    # Return a URL-compatible query string from hash of parameters.
+    #
+    # @param [Hash] params the hash of key/value parameters.
+    # @return [String] the query string.
+    def self.build_query_string(params)
+      URI.escape(params.collect{ |key, value| "#{key.to_s}=#{value.to_s}"}.join('&'))
     end
 
   end

@@ -66,6 +66,7 @@ Then, in your action, call the regular methods on your model:
 ```ruby
 User.all # or User.collection
 User.find(3) # or User.get(3)
+User.where({ name: 'Dino' }) # or User.search({ name: 'Dino' })
 User.delete(3) # or User.destroy(3)
 User.update_attributes({ name: 'Fred' }) # or User.put({ name: 'Fred' })
 User.create({ name: 'Wilma' }) # or User.post({ name: 'Wilma' })
