@@ -36,8 +36,8 @@ ApiKits.configure do |config|
   config.path = 'http://api.example.com'
   # Default header
   config.header = { 'param1' => '123329845729384759237592348712876817234'}
-  # JWT Bearer Token Authorization
-  config.auth('243u2484290842048108-1ew-wf09834')
+  # Bearer Token Authorization
+  config.bearer_token('243u2484290842048108-1ew-wf09834')
   # If inside Rails
   config.mock = Rails.env.test?
 end

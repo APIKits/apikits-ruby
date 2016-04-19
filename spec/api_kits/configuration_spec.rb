@@ -82,10 +82,10 @@ describe ApiKits::Configuration do
     end
   end
 
-  describe '#auth=' do
+  describe '#bearer_token=' do
     before :each do
       ApiKits.configure do |config|
-        config.auth('1234567890')
+        config.bearer_token('1234567890')
       end
     end
 

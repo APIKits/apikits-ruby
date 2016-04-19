@@ -1,5 +1,5 @@
 # Exception for a Unauthorized Response (Status Code: 401).
-# The request requires user authentication.
+# The request requires authorization.
 class ApiKits::Exceptions::Unauthorized < ApiKits::Exceptions::Generic
 
   # Initialize a new exception.

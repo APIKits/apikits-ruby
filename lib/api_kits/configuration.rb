@@ -41,10 +41,10 @@ module ApiKits
       @header = { 'Content-Type' => 'application/json', 'Accept' => 'application/json' }.merge(header)
     end
 
-    # Set a JWT bearer token authorization for all requests.
+    # Set a bearer token authorization for all requests.
     #
     # @param [String] token the user JWT token requests.
-    def auth(token)
+    def bearer_token(token)
       @header.merge!({ 'Authorization' => "Bearer #{token}" })
     end
   end
