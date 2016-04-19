@@ -9,9 +9,16 @@ Add this line to your application's `Gemfile`:
 gem 'apikits-ruby'
 ```
 
+Or to your project's `.gemspec`:
+```ruby
+Gem::Specification.new do |spec|
+  spec.add_runtime_dependency 'apikits-ruby'
+end
+```
+
 And then execute:
 ```
-$ bundle
+$ bundle install
 ```
 
 Or install it yourself as:
@@ -19,7 +26,7 @@ Or install it yourself as:
 $ gem install apikits-ruby
 ```
 
-If you will use Typhoeus (https://github.com/typhoeus/typhoeus), you must have Typhoeus version above 0.5.0.
+If you want to use Typhoeus (https://github.com/typhoeus/typhoeus), you must have Typhoeus > v0.5.0.
 
 ## Documentation
 
@@ -33,7 +40,7 @@ Create an initializer:
 ```ruby
 ApiKits.configure do |config|
   # Define the API entry point
-  config.path = 'http://api.example.com'
+  config.api_uri = 'http://api.example.com'
   # Default header
   config.header = { 'param1' => '123329845729384759237592348712876817234'}
   # Bearer Token Authorization
